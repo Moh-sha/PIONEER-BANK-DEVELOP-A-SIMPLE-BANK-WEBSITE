@@ -29,14 +29,125 @@
         <input id="submit" type="submit" class="btn btn-primary" /><br />
       </div>
     </div>
+    <div id="new">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="deposite status">
+            <h5>Deposite</h5>
+            <h2> $<span id="deposite_value">00</span></h2>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="withdraw status">
+            <h5>Withdraw</h5>
+            <h2>$00</h2>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="balance status">
+            <h5>Balance</h5>
+            <h2>$ <span id="currentBalance">1200</span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="submit-area">
+            <h4>Withdraw</h4>
+            <input
+              type="text" id="Add_withdraw"
+              class="form-control"
+              placeholder="type withdraw"
+            />
+            <br />
+            <br>
+            <button id="withdraw" class="btn btn-success">Withdraw</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="submit-area">
+            <h4>Deposite</h4>
+            <input id="deposite"
+              type="text"
+              class="form-control"
+              placeholder="type deposite "
+            />
+            <br />
+            <br>
+            
+            <button id="addDeposite" class="btn btn-success">deposite</button>
+          </div>
+        </div>
+      </div>
+    
 
     <script>
-      const lgn = document
+     
+     //login
+     const lgn = document
         .getElementById("submit")
         .addEventListener("click", function () {
           const LogArea = document.getElementById("login-Area");
           LogArea.style.display = "none";
+          const newOne = document.getElementById("new");
+          newOne.style.display = "block";
         });
-    </script>
+
+          //depoite
+
+
+            const addDeposit = document.getElementById("addDeposite");
+             addDeposit.addEventListener("click", function(){
+                            
+                 const deposite_number=update("deposite");
+
+                      
+                  update_balance("deposite_value",deposite_number);
+                   update_balance("currentBalance",deposite_number);
+                  
+                  document.getElementById("deposite").value="";
+                
+                    
+                })
+ 
+
+                      function update_balance(id,deposite_number)
+                      {
+                    const currentBalance =document.getElementById(id).innerText;
+                    const Balance=parseFloat(currentBalance);
+
+                    const TotalCurrentBalance = Balance+deposite_number;
+
+
+                    document.getElementById(id).innerText=TotalCurrentBalance;
+
+                      }
+
+
+
+                   //withdraw 
+                   
+                   const add_withdraw=document.getElementById("withdraw");
+                   add_withdraw.addEventListener("click", function(){
+                      
+                      const update_withdraw=update("Add_withdraw");
+                             
+                            console.log(update_withdraw);
+                                     })
+
+
+
+                  function update(id){
+
+                    const deposite = document.getElementById(id).value;
+                   const deposite_number=parseFloat(deposite);
+                   return deposite_number;
+
+
+
+
+                  }                   
+</script>
   </body>
 </html>
