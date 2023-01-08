@@ -40,7 +40,7 @@
         <div class="col-md-4">
           <div class="withdraw status">
             <h5>Withdraw</h5>
-            <h2>$00</h2>
+            <h2> $ <span id="withdraw_current_balance">00</span></h2>
           </div>
         </div>
         <div class="col-md-4">
@@ -133,8 +133,14 @@
                       
                       const update_withdraw=update("Add_withdraw");
                              
-                            console.log(update_withdraw);
-                                     })
+                       update_balance("withdraw_current_balance",update_withdraw);
+                       update_balance("currentBalance",-1*update_withdraw);
+                       document.getElementById("Add_withdraw").value="";
+
+                      
+                
+                       
+                      })
 
 
 
